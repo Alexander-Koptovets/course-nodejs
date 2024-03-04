@@ -11,8 +11,11 @@ const appenders = {
 }
 function getAppender() {
     const outputFormat = getFormatter(config.formatter);
+    const selectedAppenders = Array.isArray(config.appender) ?
+        config.appender.map(appenderType => appenders[appenderType]) :
+        [config.appender].map(appenderType => appenders[appenderType]);
 
-    return appenders[config.appender](outputFormat);
+    return selectedAppenders.map(appender => appender(outputFormat));
 }
 
 export { getAppender }

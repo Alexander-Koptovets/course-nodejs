@@ -28,7 +28,7 @@ function getConfigFromEnvs() {
         config.appender = appender
     }
 
-    if(validateFormatter(formatter)){
+    if (validateFormatter(formatter)){
         config.formatter = formatter;
     }
 

@@ -19,7 +19,9 @@ function configFromFile() {
             config.logLevel = logLevel;
         }
 
-        const appender = configFile.appender.toUpperCase();
+        const appender = Array.isArray(configFile.appender) ?
+            configFile.appender.map(appender => appender.toUpperCase()) :
+            configFile.appender.toUpperCase();
         if (validateAppender(appender)) {
             config.appender = appender;
         }

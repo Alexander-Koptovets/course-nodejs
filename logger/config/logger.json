@@ -1,5 +1,5 @@
 {
   "logLevel": "ERROR",
-  "appender": "FILE",
+  "appender": ["FILE", "CONSOLE"],
   "outputFormat": "JSON"
 }

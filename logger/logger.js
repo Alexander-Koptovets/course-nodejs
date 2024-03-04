@@ -2,7 +2,7 @@ import { level } from "./constants.js";
 import * as appenderStrategy from "./appenders/strategy.js"
 
 const logger = (category) => ({
-    info: (message) => {
+    info: (...message) => {
         executeLog(level.INFO, category, message);
     },
     warn: (message) => {
@@ -22,7 +22,7 @@ const logger = (category) => ({
 const appender = appenderStrategy.getAppender();
 
 function executeLog(level, category, message) {
-    appender.log(Date.now(), level, category, message);
+    appender.forEach(a => a.log(Date.now(), level, category, message));
 }
 
 export default {
