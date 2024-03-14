@@ -13,7 +13,7 @@ router.post('/create', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    res.json({ success: true, data: users });
+    res.render('users', { users });
 });
 
 export default router;

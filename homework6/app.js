@@ -9,8 +9,15 @@ import userRouter from './routers/userController.js';
 const app = express();
 const PORT = 3000;
 
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
 app.use(bodyParser.json());
-app.use(authMiddleware);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('client'));
+app.use('/client', express.static('client'));
+
+// app.use(authMiddleware);
 
 app.use('/urls', urlRouter);
 app.use('/code', codeRouter);
