@@ -3,7 +3,7 @@ import { urlDatabase } from "../database.js";
 
 const router = express.Router();
 
-router.get('/:code', (req, res) => {
+router.post('/:code', (req, res) => {
     const { code } = req.params;
     const urlInfo = urlDatabase.find(url => url.code === code);
 
